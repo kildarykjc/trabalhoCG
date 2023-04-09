@@ -1,6 +1,6 @@
 import math
 
-class Ponto:
+class Ponto: 
     def __init__(self, x: int, y: int, resolucao) -> None:
         self.x, self.y = self.scale_point(x, y, resolucao[0], resolucao[1])
 
