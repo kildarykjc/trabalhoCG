@@ -14,18 +14,20 @@ resolucao4 = altura*8, largura*6
 resolucao5 = int(altura*19.2), int(largura*10.8)
 
 # EXEMPLO DE RETAS
+# vertical
 reta1_ponto1 = (-0.5,-0.8)
-reta1_ponto2 = (-0.5,0,8)
+reta1_ponto2 = (-0.5,0.8)
 
-reta2_ponto1 = (0,5,0,5)
-reta2_ponto2 = (0,5,0,5)
+# horizontal
+reta2_ponto1 = (-0.9,0)
+reta2_ponto2 = (0.9,0)
 
-reta3_ponto1 = ()
-reta3_ponto2 = ()
+# inclinada
+reta3_ponto1 = (-0.9,-0.9)
+reta3_ponto2 = (0.9,0.9)
 
-reta4_ponto1 = ()
-reta4_ponto2 = ()
-
+reta4_ponto1 = (-0.9,0.9)
+reta4_ponto2 = (0.9,-0.9)
 
 # EXEMPLO PONTOS DO TRIANGULO
 tri_ponto1 = (-0.5, -0.87)
@@ -47,8 +49,6 @@ quadrado2_ponto2 = (-0.5, 0.5)
 quadrado2_ponto3 = (0.5, 0.5)
 quadrado2_ponto4 = (0.5, -0.5)
 # segunda aresta
-# terceira aresta
-
 
 # HEXAGONO 1
 
@@ -64,10 +64,14 @@ hex_ponto6 = (0.5, -0.87)
 
 def reta(reta_ponto1,reta_ponto2,resolucao):
     todos_os_pontos = []
+    print(reta_ponto1)
+    print(reta_ponto2)
     reta_ponto1 = ponto.Ponto(reta_ponto1[0],reta_ponto1[1],resolucao)
     reta_ponto2 = ponto.Ponto(reta_ponto2[0],reta_ponto2[1],resolucao)
     todos_os_pontos.append(ponto.rasterizacao_de_retas(reta_ponto1,reta_ponto2))
+
     return todos_os_pontos
+
 # rasterização do triangulo
 def triangulo(tri_ponto1,tri_ponto2,tri_ponto3,resolucao):
     
@@ -95,6 +99,7 @@ def quadrado(quadrado_ponto1, quadrado_ponto2,quadrado_ponto3, quadrado_ponto4,r
     todos_os_pontos.append(ponto.rasterizacao_de_retas(quadrado_ponto2, quadrado_ponto3))
     todos_os_pontos.append(ponto.rasterizacao_de_retas(quadrado_ponto3, quadrado_ponto4))
     todos_os_pontos.append(ponto.rasterizacao_de_retas(quadrado_ponto4, quadrado_ponto1))
+    
     return todos_os_pontos
 
 # rasterização de hexagono
@@ -136,7 +141,7 @@ def plotarImagem(image):
     plt.show()
     plt.plot([1, 2])
     plt.savefig('image.jpg')
-plotarImagem(criaImagem(reta(reta2_ponto1,reta2_ponto2,resolucao1), resolucao1))
+plotarImagem(criaImagem(reta(reta5_ponto1,reta5_ponto2,resolucao1), resolucao1))
 
 
 Image1 = criaImagem(reta(reta1_ponto1,reta1_ponto2,resolucao1), resolucao1)
