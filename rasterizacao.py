@@ -1,11 +1,10 @@
 import math
-
-class Ponto: 
-    def __init__(self, x: int, y: int, resolucao) -> None:
+import numpy as np
+class Ponto:
+    def __init__(self, x: int, y: int, resolucao: list) -> None:
         self.x, self.y = self.scale_point(x, y, resolucao[0], resolucao[1])
 
     def scale_point(self, x, y, largura, altura):
-        # Distância entre as coordenadas máxima e mínima para x
         x_dist = 1 - (-1)
         # Distância entre as coordenadas máxima e mínima para y
         y_dist = 1 - (-1)
@@ -31,7 +30,7 @@ def rasterizacao_delta_x_maior_delta_y(ponto1: Ponto, m, b, x2) -> list:
     pontos: list = []
     pontos.append(produz_fragmento(x1, y1))
     if (x1 < x2):
-        while (x1 < x2):
+        while (x1 <= x2):
             x1 = x1 + 1
             if (m != 0):
                 y1 = math.ceil(m*x1 + b)
@@ -94,4 +93,52 @@ def rasterizacao_de_retas(ponto1: Ponto, ponto2: Ponto) -> None:
 
     return pontos
 
+def rasteriza_poligno(arestas, largura, altura):
+    img_face_orig = np.zeros((largura, altura, 3), dtype="uint8")
+    img_face = np.zeros((largura, altura, 3), dtype="uint8")
+
+    for aresta in arestas:
+        for ponto in aresta:
+            img_face_orig[ponto[0], ponto[1]] = [1, 1, 1]
+
+    for i in range(altura):
+        cont_h = 0
+        sava_ponto_h = []
+        cont_v = 0
+        sava_ponto_v = []
+        for j in range(largura - 1):
+            # Horizontal
+            if np.array_equal(img_face_orig[j, i], [1, 1, 1]):
+                cont_h += 1
+                if len(sava_ponto_h) > 1:
+                    del sava_ponto_h[0]
+                sava_ponto_h.append([j, i])
+            if cont_h == 2:
+                variacao_h = abs(sava_ponto_h[1][1] - sava_ponto_h[0][1])
+                for w in range(variacao_h):
+                    img_face[i, w + sava_ponto_h[0][1]] = [255, 255, 255]
+                cont_h = 1
+
+            # Vertical
+            if np.array_equal(img_face_orig[j, i], [1, 1, 1]):
+                cont_v += 1
+                if len(sava_ponto_v) > 1:
+                    del sava_ponto_v[0]
+                sava_ponto_v.append([j, i])
+            if cont_v == 2:
+                variacao_v = sava_ponto_v[1][0] - sava_ponto_v[0][0]
+                for z in range(variacao_v):
+                    img_face[z + sava_ponto_v[0][0], i] = [255, 255, 255]
+                cont_v = 1
+
+    arestas_rasterizadas = []
+    for i in range(altura):
+        for j in range(largura-1):
+            if np.array_equal(img_face[j, i], img_face_orig[j, i]):
+                continue
+
+            if np.array_equal(img_face[j, i], [255, 255, 255]):
+                arestas_rasterizadas.append([j, i])
+
+    return arestas_rasterizadas
 
