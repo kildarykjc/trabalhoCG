@@ -54,10 +54,10 @@ quadrado2_ponto4 = (0.5, -0.5)
 # HEXAGONO 1
 
 hex_ponto1 = (-0.5, -0.87)
-hex_ponto2 = (-1, 0)
+hex_ponto2 = (-0.9, 0)
 hex_ponto3 = (-0.5, 0.87)
 hex_ponto4 = (0.5, 0.87)
-hex_ponto5 = (1, 0)
+hex_ponto5 = (0.9, 0)
 hex_ponto6 = (0.5, -0.87)
 
 
