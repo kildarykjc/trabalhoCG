@@ -144,7 +144,8 @@ def criaImagem(todosPontos, resolucao):
     
 def plotarImagem(escolha):
     match escolha:
-        
+        case "linhas":
+            salvarGeometricaTodas(reta1_ponto1,reta1_ponto2)
         case "triangulo":
             salvarGeometricaTodas(tri_ponto1,tri_ponto2,tri_ponto3)
         case "quadrado":
@@ -164,8 +165,13 @@ def salvarGeometrica(pontosDaArea,resolucao):
 def salvarGeometricaTodas(*args):
     print(len(args))
     print((args))
-
-    if len(args)==3:
+    if len(args)==2:
+        Image1 = img.criar_imagem_geometrica(reta(args[0],args[1],resolucao1),resolucao1)
+        Image2 = img.criar_imagem_geometrica(reta(args[0],args[1],resolucao2),resolucao2)
+        Image3 = img.criar_imagem_geometrica(reta(args[0],args[1],resolucao3),resolucao3)
+        Image4 = img.criar_imagem_geometrica(reta(args[0],args[1],resolucao4),resolucao4)
+        Image5 = img.criar_imagem_geometrica(reta(args[0],args[1],resolucao5),resolucao5)
+    elif len(args)==3:
         Image1 = salvarGeometrica(triangulo(args[0],args[1],args[2],resolucao1),resolucao1)
         Image2 = salvarGeometrica(triangulo(args[0],args[1],args[2],resolucao2),resolucao2)
         Image3 = salvarGeometrica(triangulo(args[0],args[1],args[2],resolucao3),resolucao3)
@@ -184,11 +190,7 @@ def salvarGeometricaTodas(*args):
         Image4 = salvarGeometrica(hexagono(args[0],args[1],args[2],args[3],args[4],args[5],resolucao4),resolucao4)
         Image5 = salvarGeometrica(hexagono(args[0],args[1],args[2],args[3],args[4],args[5],resolucao5),resolucao5)
 
-    #Image1 = salvarGeometrica(pontosDaArea,resolucao1)
-    #Image2 = salvarGeometrica(pontosDaArea, resolucao2)
-    #Image3 = salvarGeometrica(pontosDaArea, resolucao3)
-    #Image4 = salvarGeometrica(pontosDaArea, resolucao4)
-    #Image5 = salvarGeometrica(pontosDaArea, resolucao5)
+    
     fig = plt.figure(figsize=(15, 10)) 
     rows = 1
     columns = 5
@@ -217,77 +219,3 @@ def salvarGeometricaTodas(*args):
     plt.plot([1, 2])
     plt.savefig('image.jpg')
 
-#salvarGeometricaTodas(quadrado_ponto1,quadrado_ponto2,quadrado_ponto3,quadrado_ponto4)
-    
-    #plt.imshow(Image1) 
-    #plt.axis('off') 
-    #plt.title("100x100") 
-    ##plt.show()
-    #plt.plot([1, 2])
-    #plt.savefig('image.jpg')
-#plotarImagem(criaImagem(reta(reta1_ponto1,reta1_ponto2,resolucao1), resolucao1))
-
-
-#Image1 = criaImagem(reta(reta1_ponto1,reta1_ponto2,resolucao1), resolucao1)
-#Image1 = criaImagem(triangulo(tri_ponto1,tri_ponto2,tri_ponto3,resolucao1), resolucao1)
-#Image2 = criaImagem(triangulo(tri_ponto1,tri_ponto2,tri_ponto3,resolucao2), resolucao2)
-#Image3 = criaImagem(triangulo(tri_ponto1,tri_ponto2,tri_ponto3,resolucao3), resolucao3)
-#Image4 = criaImagem(triangulo(tri_ponto1,tri_ponto2,tri_ponto3,resolucao4), resolucao4)
-#Image5 = criaImagem(triangulo(tri_ponto1,tri_ponto2,tri_ponto3,resolucao5), resolucao5)
-
-#Image1 = criaImagem(quadrado(quadrado_ponto1,quadrado_ponto2,quadrado_ponto3,quadrado_ponto4,resolucao1), resolucao1)
-#Image2 = criaImagem(quadrado(quadrado_ponto1,quadrado_ponto2,quadrado_ponto3,quadrado_ponto4,resolucao2), resolucao2)
-#Image3 = criaImagem(quadrado(quadrado_ponto1,quadrado_ponto2,quadrado_ponto3,quadrado_ponto4,resolucao3), resolucao3)
-#Image4 = criaImagem(quadrado(quadrado_ponto1,quadrado_ponto2,quadrado_ponto3,quadrado_ponto4,resolucao4), resolucao4)
-#Image5 = criaImagem(quadrado(quadrado_ponto1,quadrado_ponto2,quadrado_ponto3,quadrado_ponto4,resolucao5), resolucao5)
-#fig = plt.figure(figsize=(15, 10)) 
-#rows = 1
-#columns = 1
-#
-#
-#fig.add_subplot(rows, columns, 1) 
-#plt.imshow(Image1) 
-#plt.axis('off') 
-#plt.title("100x100") 
-#fig.add_subplot(rows, columns, 2) 
-#plt.imshow(Image2) 
-#plt.axis('off') 
-#plt.title("300x300") 
-#fig.add_subplot(rows, columns, 3) 
-#plt.imshow(Image3) 
-#plt.axis('off') 
-#plt.title("600x600") 
-#fig.add_subplot(rows, columns, 4) 
-#plt.imshow(Image4) 
-#plt.axis('off') 
-#plt.title("800x600")
-#fig.add_subplot(rows, columns, 5) 
-#plt.imshow(Image5) 
-#plt.axis('off') 
-#plt.title("1920x1080")
-#plt.plot([1, 2])
-#plt.savefig('image.jpg')
-#plt.show()
-
-#triangulo(tri2_ponto1,tri2_ponto2,tri2_ponto3)
-#quadrado(quadrado_ponto1, quadrado_ponto2,quadrado_ponto3, quadrado_ponto4)
-#hexagono(hex_ponto1, hex_ponto2,hex_ponto3, hex_ponto4,hex_ponto5, hex_ponto6)
-
-#imag = np.zeros((resolucao1[0], resolucao1[1], 3), dtype=np.uint8)
-##print(imag)
-#for pontos in todos_os_pontos:
-#    eixo_x = []
-#    eixo_y = []
-#    print(pontos)
-#    for ponto in pontos:
-#        lista = tuple(ponto)
-#        #imag[int(lista[0]), int(lista[1])] = [255, 0, 0]
-#        eixo_x.append(int(ponto[0]))
-#        eixo_y.append(int(ponto[1]))
-#    # print(eixo_y)
-#    imag[eixo_y, eixo_x] = [255, 0, 0]
-#    #plt.plot(eixo_x, eixo_y)
-## plt.imshow(imag)
-#
-#plt.imshow(imag) 
-#plt.show()
