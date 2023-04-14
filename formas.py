@@ -119,6 +119,8 @@ def hexagono(hex_ponto1, hex_ponto2,hex_ponto3, hex_ponto4,hex_ponto5, hex_ponto
     todos_os_pontos.append(ponto.rasterizacao_de_retas(hex_ponto5, hex_ponto6))
     todos_os_pontos.append(ponto.rasterizacao_de_retas(hex_ponto6, hex_ponto1))
 
+    return todos_os_pontos
+
 
 def criaImagem(todosPontos, resolucao):
     imag = ''
