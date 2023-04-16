@@ -218,4 +218,19 @@ def salvarGeometricaTodas(*args):
     plt.title("1920x1080")
     plt.plot([1, 2])
     plt.savefig('image.jpg')
-
+def gerarImagemDigitada(reta1_ponto1,reta1_ponto2,resolucao1):
+    res = 2,2
+    Image1 = img.criar_imagem_geometrica(reta(reta1_ponto1,reta1_ponto2,resolucao1),res)
+    Image2 = img.criar_imagem_geometrica(reta(reta1_ponto1,reta1_ponto2,resolucao1),resolucao1)
+    
+    fig = plt.figure(figsize=(15, 10)) 
+    rows = 1
+    columns = 2
+    fig.add_subplot(rows, columns, 1) 
+    plt.imshow(Image1) 
+    plt.axis('off') 
+    plt.title(res) 
+    fig.add_subplot(rows, columns, 2) 
+    plt.imshow(Image2) 
+    plt.axis('off') 
+    plt.title(resolucao1) 

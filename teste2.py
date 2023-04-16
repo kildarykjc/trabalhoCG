@@ -1,5 +1,5 @@
 from tkinter import ttk
-import tkinter as tk
+from tkinter import *
 from PIL import ImageTk
 import formas
 from tkinter.messagebox import showinfo
@@ -11,82 +11,146 @@ def mostrarImagem(escolhida):
     imagebox.config(image=image)
     imagebox.image = image # save a reference of the image to avoid garbage collection
 
-def show_image(imagefile):
-    image = ImageTk.PhotoImage(file=imagefile)
-    imagebox.config(image=image)
-    imagebox.image = image # save a reference of the image to avoid garbage collection
-
-def digitarPontos():
+def digitarPontos(janela):
+    
     # create a combobox
     # label
-    label = ttk.Label(text="Selecione a Forma e sua resolucao:")
-    label.pack(fill=tk.X, padx=5, pady=5)
+    label = ttk.Label(text="Selecione a Forma")
+    label.pack(fill=X, padx=5, pady=5)
 
     # create a combobox
-    selected_month = tk.StringVar()
-    month_cb = ttk.Combobox(root, textvariable=selected_month)
+    selecionarFormas = StringVar()
+    forma = ttk.Combobox(janela, textvariable=selecionarFormas)
 
-    # get first 3 letters of every month name
-    #month_cb['values'] = [month_name[m][0:3] for m in range(1, 13)]
-    month_cb['values'] = ["Linha","Triangulo","Quadrado","Hexagono"]
+    forma['values'] = ["Linha","Triangulo","Quadrado","Hexagono"]
 
     # prevent typing a value
-    month_cb['state'] = 'readonly'
+    forma['state'] = 'readonly'
 
     # place the widget
-    month_cb.pack(fill=tk.X, padx=5, pady=5)
+    forma.pack(fill=X, padx=5, pady=5)
 
 
     # bind the selected value changes
-    def month_changed(event):
+    def formaEscolhida(event):
+        
+        formaGeo = selecionarFormas.get()
+        if formaGeo == "Linha":
+            Label(janela,text="ponto1 X",anchor=W).place(x=10,y=20,width=100,height=20)
+            ponto1X=Entry(janela)
+            ponto1X.place(x=10,y=100,width=200,height=20)
+            Label(janela,text="ponto1 y",anchor=W).place(x=100,y=20,width=100,height=20)
+            ponto1y=Entry(janela)
+            ponto1y.place(x=10,y=100,width=200,height=20)
+            print("")
+        elif formaGeo == "Triangulo":
+            print("")
+        elif formaGeo == "Quadrado":
+            print("")
+        else:
+            print("")
+
+        # create a combobox
+        # label
+        label = ttk.Label(text="Selecione a resolucao:")
+        label.pack(fill=X, padx=5, pady=5)
+        print(selecionarFormas.get())
+        # create a combobox
+        selecionarResolucao = StringVar()
+        resolucao = ttk.Combobox(janela, textvariable=selecionarResolucao)
+
+        # get first 3 letters of every month name
+        #forma['values'] = [month_name[m][0:3] for m in range(1, 13)]
+        resolucao['values'] = ["100x100","300x300","600x600","800x600","1980x1080"]
+
+        # prevent typing a value
+        resolucao['state'] = 'readonly'
+
+        # place the widget
+        resolucao.pack(fill=X, padx=5, pady=5)
+               
         """ handle the month changed event """
         showinfo(
             title='Result',
-            message=f'You selected {selected_month.get()}!'
+            message=f'You selected {selecionarFormas.get()}!'
         )
+        resolucao.bind('<<ComboboxSelected>>', "")
 
 
-    month_cb.bind('<<ComboboxSelected>>', month_changed)
+    forma.bind('<<ComboboxSelected>>', formaEscolhida)
 
     # set the current month
     #current_month = date().strftime('%b')
-    #month_cb.set("teste")
+    #forma.set("teste")
 
     ########################################################################################### Fim Combobox
 
-root = tk.Tk()
+def coordPontos(formaGeo):
+    
+    
+    if formaGeo == "Linha":
+        print("")
+    elif formaGeo == "Triangulo":
+        print("")
+    elif formaGeo == "Quadrado":
+        print("")
+    else:
+        print("")
+
+def janelaTriangulo():
+	
+	janela2 = Tk().Toplevel()
+    
+	janela2.title('Pontos do triangulo')
+	Label(janela2, text = "Ponto1 x,y").grid(row = 0, column = 0 )
+	Label(janela2, text = "Ponto2 x,y").grid(row = 0, column = 1 )
+    #Label(janela2, text = "Ponto2 x,y").grid(row = 0, column = 3 )
+    #botao_voltar = Button(janela2, text = 'Fechar a janela2', command = janela2.destroy)
+	#botao_volta.grid(row = 1, column = 0)
+
+
+#def Take_input():
+   # INPUT = inputtxt.get("1.0", "end-1c")
+   # print(INPUT)
+   # if(INPUT == "120"):
+   #     Output.insert(END, 'Correct')
+   # else:
+   #     Output.insert(END, "Wrong answer")
+
+
+root = Tk()
 root.title("Trabalho N1 CG")
 #root.geometry("500x300")
 
-frame = tk.Frame(root)
+frame = Frame(root)
 frame.pack()
 
-button = tk.Button(frame, text="Sair", fg="red", command=quit)
-button.pack(side=tk.LEFT)
+#button = tk.Button(frame, text="Sair", fg="red", command=quit)
+#button.pack(side=tk.LEFT)
+#
+#iLinhas = tk.Button(frame, text="Mostrar imagens com todas linhas", command=lambda: mostrarImagem("linhas"))
+#iLinhas.pack(side=tk.LEFT)
+#
+#iTriangulo = tk.Button(frame, text="Mostrar imagens do triangulo", command=lambda: mostrarImagem("triangulos"))
+#iTriangulo.pack(side=tk.LEFT)
+#
+#iQuadrado = tk.Button(frame, text="Mostrar imagens do quadrado", command=lambda: mostrarImagem("quadrados"))
+#iQuadrado.pack(side=tk.LEFT)
+#
+#iHexagono = tk.Button(frame, text="Mostrar imagens so hexagono", command=lambda: mostrarImagem("hexagonos"))
+#iHexagono.pack(side=tk.LEFT)
 
-iLinhas = tk.Button(frame, text="Mostrar imagens com todas linhas", command=lambda: mostrarImagem("linhas"))
-iLinhas.pack(side=tk.LEFT)
+iFormas = Button(frame, text="Mostrar imagens de todas as formas", command=lambda: mostrarImagem("formas"))
+iFormas.pack(side=LEFT)
 
-iTriangulo = tk.Button(frame, text="Mostrar imagens do triangulo", command=lambda: mostrarImagem("triangulos"))
-iTriangulo.pack(side=tk.LEFT)
+iManual = Button(frame, text="Digitar pontos", command=lambda: janelaTriangulo())
+iManual.pack(side=LEFT)
 
-iQuadrado = tk.Button(frame, text="Mostrar imagens do quadrado", command=lambda: mostrarImagem("quadrados"))
-iQuadrado.pack(side=tk.LEFT)
-
-iHexagono = tk.Button(frame, text="Mostrar imagens so hexagono", command=lambda: mostrarImagem("hexagonos"))
-iHexagono.pack(side=tk.LEFT)
-
-iFormas = tk.Button(frame, text="Mostrar imagens de todas as formas", command=lambda: mostrarImagem("formas"))
-iFormas.pack(side=tk.LEFT)
-
-iManual = tk.Button(frame, text="Digitar pontos", command=lambda: digitarPontos())
-iManual.pack(side=tk.LEFT)
-
-other = tk.Button(frame, text="Mostrar", command=lambda: show_image("bola.jpg"))
-other.pack(side=tk.LEFT)
+other = Button(frame, text="Mostrar", command=lambda: show_image("bola.jpg"))
+other.pack(side=LEFT)
 
 # label to show the image
-imagebox = tk.Label(root)
+imagebox = Label(root)
 imagebox.pack()
 
 root.mainloop()

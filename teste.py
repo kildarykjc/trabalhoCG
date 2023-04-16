@@ -1,26 +1,34 @@
 from tkinter import *
-from PIL import Image, ImageTk
-import formas
-#imagem = formas.plotarImagem
-
-class TesteImage1:
-
-    def __init__(self, master=None):
-
-        self.widget1 = Frame(master)
-        self.widget1.pack()
-        
-        # imagem = ImageTk.PhotoImage(Image.open("bola.jpg"))
-        image = Image.open("image.jpg")
-        photo = ImageTk.PhotoImage(image)
-        self.imagem = Label(master, text = "adicionando", image = photo)
-        self.imagem.image = photo
-        self.imagem.pack()
-
-        self.teste = Label(self.widget1, text="testando")
-        self.teste.pack()
-
-
+ 
 root = Tk()
-TesteImage1(root)
-root.mainloop()
+root.geometry("300x300")
+root.title(" Q&A ")
+ 
+def Take_input():
+    INPUT = inputtxt.get("1.0", "end-1c")
+    print(INPUT)
+    if(INPUT == "120"):
+        Output.insert(END, 'Correct')
+    else:
+        Output.insert(END, "Wrong answer")
+     
+l = Label(text = "What is 24 * 5 ? ")
+inputtxt = Text(root, height = 10,
+                width = 25,
+                bg = "light yellow")
+ 
+Output = Text(root, height = 5,
+              width = 25,
+              bg = "light cyan")
+ 
+Display = Button(root, height = 2,
+                 width = 20,
+                 text ="Show",
+                 command = lambda:Take_input())
+ 
+l.pack()
+inputtxt.pack()
+Display.pack()
+Output.pack()
+ 
+mainloop()
