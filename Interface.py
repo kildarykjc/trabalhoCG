@@ -27,14 +27,19 @@ def janelaTriangulo():
     labelPonto1 = tk.Label(janela2, text='Ponto1 x,y').grid(row=0, column=0)
     labelPonto2 = tk.Label(janela2, text='Ponto2 x,y').grid(row=0, column=1)
     labelPonto3 = tk.Label(janela2, text='Ponto3 x,y').grid(row=0, column=2)
-    textoPonto1 = tk.Text(janela2,height = 1,width = 9,bg = "light yellow").grid(row=1,column=0)
-    textoPonto2 = tk.Text(janela2,height = 1,width = 9,bg = "light yellow").grid(row=1,column=1)
-    textoPonto3 = tk.Text(janela2,height = 1,width = 9,bg = "light yellow").grid(row=1,column=2)
+    textoPonto1 = tk.Entry(janela2,bg = "light yellow")
+    textoPonto1.grid(row=1,column=0)
+    textoPonto2 = tk.Entry(janela2,bg = "light yellow")
+    textoPonto2.grid(row=1,column=1)
+    textoPonto3 = tk.Entry(janela2,bg = "light yellow")
+    textoPonto3.grid(row=1,column=2)
     selecionarResolucao = tk.StringVar()
     comboResolucao = ttk.Combobox(janela2, textvariable=selecionarResolucao)
     comboResolucao['values'] = ["100x100","300x300","600x600","800x600","1920x1080"]
     comboResolucao['state'] = 'readonly'
-    comboResolucao.grid(row=2)
+    comboResolucao.grid(row=2, column=0)
+    botaoExec = tk.Button(janela2, text='Executar', command=lambda: executaResolucao(textoPonto1.get(),textoPonto2.get(),textoPonto3.get(),comboResolucao.get()))
+    botaoExec.grid(row=2,column=1)
 
 def janelaQuadrado():
     janela2 = tk.Toplevel()
@@ -43,15 +48,21 @@ def janelaQuadrado():
     labelPonto2 = tk.Label(janela2, text='Ponto2 x,y').grid(row=0, column=1)
     labelPonto3 = tk.Label(janela2, text='Ponto3 x,y').grid(row=0, column=2)
     labelPonto4 = tk.Label(janela2, text='Ponto4 x,y').grid(row=0, column=3)
-    textoPonto1 = tk.Text(janela2,height = 1,width = 9,bg = "light yellow").grid(row=1,column=0)
-    textoPonto2 = tk.Text(janela2,height = 1,width = 9,bg = "light yellow").grid(row=1,column=1)
-    textoPonto3 = tk.Text(janela2,height = 1,width = 9,bg = "light yellow").grid(row=1,column=2)
-    textoPonto4 = tk.Text(janela2,height = 1,width = 9,bg = "light yellow").grid(row=1,column=3)
+    textoPonto1 = tk.Entry(janela2,bg = "light yellow")
+    textoPonto1.grid(row=1,column=0)
+    textoPonto2 = tk.Entry(janela2,bg = "light yellow")
+    textoPonto2.grid(row=1,column=1)
+    textoPonto3 = tk.Entry(janela2,bg = "light yellow")
+    textoPonto3.grid(row=1,column=2)
+    textoPonto4 = tk.Entry(janela2,bg = "light yellow")
+    textoPonto4.grid(row=1,column=3)
     selecionarResolucao = tk.StringVar()
     comboResolucao = ttk.Combobox(janela2, textvariable=selecionarResolucao)
     comboResolucao['values'] = ["100x100","300x300","600x600","800x600","1920x1080"]
     comboResolucao['state'] = 'readonly'
-    comboResolucao.grid(row=2)
+    comboResolucao.grid(row=2, column=0)
+    botaoExec = tk.Button(janela2, text='Executar', command=lambda: executaResolucao(textoPonto1.get(),textoPonto2.get(),textoPonto3.get(),textoPonto4.get(),comboResolucao.get()))
+    botaoExec.grid(row=2,column=1)
 
 def janelaHexagono():
     janela2 = tk.Toplevel()
@@ -62,17 +73,26 @@ def janelaHexagono():
     labelPonto4 = tk.Label(janela2, text='Ponto4 x,y').grid(row=0, column=3)
     labelPonto5 = tk.Label(janela2, text='Ponto5 x,y').grid(row=0, column=4)
     labelPonto6 = tk.Label(janela2, text='Ponto6 x,y').grid(row=0, column=5)
-    textoPonto1 = tk.Text(janela2,height = 1,width = 9,bg = "light yellow").grid(row=1,column=0)
-    textoPonto2 = tk.Text(janela2,height = 1,width = 9,bg = "light yellow").grid(row=1,column=1)
-    textoPonto3 = tk.Text(janela2,height = 1,width = 9,bg = "light yellow").grid(row=1,column=2)
-    textoPonto4 = tk.Text(janela2,height = 1,width = 9,bg = "light yellow").grid(row=1,column=3)
-    textoPonto5 = tk.Text(janela2,height = 1,width = 9,bg = "light yellow").grid(row=1,column=4)
-    textoPonto6 = tk.Text(janela2,height = 1,width = 9,bg = "light yellow").grid(row=1,column=5)
+    textoPonto1 = tk.Entry(janela2,bg = "light yellow")
+    textoPonto1.grid(row=1,column=0)
+    textoPonto2 = tk.Entry(janela2,bg = "light yellow")
+    textoPonto2.grid(row=1,column=1)
+    textoPonto3 = tk.Entry(janela2,bg = "light yellow")
+    textoPonto3.grid(row=1,column=2)
+    textoPonto4 = tk.Entry(janela2,bg = "light yellow")
+    textoPonto4.grid(row=1,column=3)
+    textoPonto5 = tk.Entry(janela2,bg = "light yellow")
+    textoPonto5.grid(row=1,column=4)
+    textoPonto6 = tk.Entry(janela2,bg = "light yellow")
+    textoPonto6.grid(row=1,column=5)
     selecionarResolucao = tk.StringVar()
     comboResolucao = ttk.Combobox(janela2, textvariable=selecionarResolucao)
     comboResolucao['values'] = ["100x100","300x300","600x600","800x600","1920x1080"]
     comboResolucao['state'] = 'readonly'
-    comboResolucao.grid(row=2)
+    comboResolucao.grid(row=2, column=0)
+    botaoExec = tk.Button(janela2, text='Executar', command=lambda: executaResolucao(textoPonto1.get(),textoPonto2.get(),textoPonto3.get(),textoPonto4.get(),textoPonto5.get(),textoPonto6.get(),comboResolucao.get()))
+    botaoExec.grid(row=2,column=1)
+
 def executaResolucao(*args):
     if len(args)==3:
         ponto1 = args[0].split(",") 
@@ -89,7 +109,7 @@ def executaResolucao(*args):
         ponto2=list(np.float_(ponto2))
         ponto3 = args[2].split(",")
         ponto3=list(np.float_(ponto3))
-        resolucao = args[2].split("x")
+        resolucao = args[3].split("x")
         resolucao =  list(np.int_(resolucao))
         formas.gerarImagemDigitada(ponto1,ponto2,ponto3,resolucao)
     elif len(args)==5:
@@ -101,7 +121,7 @@ def executaResolucao(*args):
         ponto3=list(np.float_(ponto3))
         ponto4 = args[3].split(",")
         ponto4=list(np.float_(ponto4))
-        resolucao = args[2].split("x")
+        resolucao = args[4].split("x")
         resolucao =  list(np.int_(resolucao))
         formas.gerarImagemDigitada(ponto1,ponto2,ponto3,ponto4,resolucao)
     else:
@@ -117,7 +137,7 @@ def executaResolucao(*args):
         ponto5 = list(np.float_(ponto5))
         ponto6 = args[5].split(",")
         ponto6 = list(np.float_(ponto6))
-        resolucao = args[2].split("x")
+        resolucao = args[6].split("x")
         resolucao =  list(np.int_(resolucao))
         formas.gerarImagemDigitada(ponto1,ponto2,ponto3,ponto4,ponto5,ponto6,resolucao)
 

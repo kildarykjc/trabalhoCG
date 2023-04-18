@@ -218,26 +218,59 @@ def salvarGeometricaTodas(*args):
     plt.title("1920x1080")
     plt.plot([1, 2])
     plt.savefig('image.jpg')
-def gerarImagemDigitada(reta1_ponto1,reta1_ponto2,resolucao1):
+def gerarImagemDigitada(*args):
     res = "2x2"
-    #Image1 = img.criar_imagem_geometrica(reta(reta1_ponto1,reta1_ponto2,res),res)
-    Image2 = img.criar_imagem_geometrica(reta(reta1_ponto1,reta1_ponto2,resolucao1),resolucao1)
-    
     fig = plt.figure(figsize=(15, 10)) 
     rows = 1
     columns = 2
     fig.add_subplot(rows, columns, 1) 
-    plt.plot(-1,-1, marker='v', color="w")
-    plt.plot(1,1, marker='v', color="w")
-    plt.plot(reta1_ponto1[0],reta1_ponto1[1], marker='v', color="b")
-    plt.plot(reta1_ponto2[0],reta1_ponto2[1], marker='v', color="b") 
-    #plt.axis('off') 
+    plt.axis([-1,1,-1,1]) 
     plt.title(res) 
+    if len(args)==3:
+        plt.plot(args[0][0],args[0][1], marker='v', color="b")
+        plt.plot(args[1][0],args[1][1], marker='v', color="b")
+        resolucao = args[2]
+        Image = img.criar_imagem_geometrica(reta(args[0],args[1],resolucao),resolucao)
+        fig.add_subplot(rows, columns, 2) 
+        plt.imshow(Image) 
+        plt.axis('off') 
+        plt.title(resolucao) 
+    elif len(args)==4:
+        plt.plot(args[0][0],args[0][1], marker='v', color="b")
+        plt.plot(args[1][0],args[1][1], marker='v', color="b")
+        plt.plot(args[2][0],args[2][1], marker='v', color="b")
+        resolucao = args[3]
+        Image = salvarGeometrica(triangulo(args[0],args[1],args[2],resolucao),resolucao)
+        fig.add_subplot(rows, columns, 2) 
+        plt.imshow(Image) 
+        plt.axis('off') 
+        plt.title(resolucao) 
+    elif len(args)==5:
+        plt.plot(args[0][0],args[0][1], marker='v', color="b")
+        plt.plot(args[1][0],args[1][1], marker='v', color="b")
+        plt.plot(args[2][0],args[2][1], marker='v', color="b")
+        plt.plot(args[3][0],args[3][1], marker='v', color="b")
+        resolucao = args[4]
+        Image = salvarGeometrica(quadrado(args[0],args[1],args[2],args[3],resolucao),resolucao)
+        fig.add_subplot(rows, columns, 2) 
+        plt.imshow(Image) 
+        plt.axis('off') 
+        plt.title(resolucao) 
+    else:
+        plt.plot(args[0][0],args[0][1], marker='v', color="b")
+        plt.plot(args[1][0],args[1][1], marker='v', color="b")
+        plt.plot(args[2][0],args[2][1], marker='v', color="b")
+        plt.plot(args[3][0],args[3][1], marker='v', color="b")
+        plt.plot(args[4][0],args[4][1], marker='v', color="b")
+        plt.plot(args[5][0],args[5][1], marker='v', color="b")
+        resolucao = args[6]
+        Image = salvarGeometrica(hexagono(args[0],args[1],args[2],args[3],resolucao),resolucao)
+        fig.add_subplot(rows, columns, 2) 
+        plt.imshow(Image) 
+        plt.axis('off') 
+        plt.title(resolucao) 
+    
     #plt.gca().invert_yaxis()
-    fig.add_subplot(rows, columns, 2) 
-    plt.imshow(Image2) 
-    #plt.axis('off') 
-    #plt.gca().invert_yaxis()
-    plt.title(resolucao1) 
+    
     plt.show()
 
