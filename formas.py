@@ -219,18 +219,25 @@ def salvarGeometricaTodas(*args):
     plt.plot([1, 2])
     plt.savefig('image.jpg')
 def gerarImagemDigitada(reta1_ponto1,reta1_ponto2,resolucao1):
-    res = 2,2
-    Image1 = img.criar_imagem_geometrica(reta(reta1_ponto1,reta1_ponto2,resolucao1),res)
+    res = "2x2"
+    #Image1 = img.criar_imagem_geometrica(reta(reta1_ponto1,reta1_ponto2,res),res)
     Image2 = img.criar_imagem_geometrica(reta(reta1_ponto1,reta1_ponto2,resolucao1),resolucao1)
     
     fig = plt.figure(figsize=(15, 10)) 
     rows = 1
     columns = 2
     fig.add_subplot(rows, columns, 1) 
-    plt.imshow(Image1) 
-    plt.axis('off') 
+    plt.plot(-1,-1, marker='v', color="w")
+    plt.plot(1,1, marker='v', color="w")
+    plt.plot(reta1_ponto1[0],reta1_ponto1[1], marker='v', color="b")
+    plt.plot(reta1_ponto2[0],reta1_ponto2[1], marker='v', color="b") 
+    #plt.axis('off') 
     plt.title(res) 
+    #plt.gca().invert_yaxis()
     fig.add_subplot(rows, columns, 2) 
     plt.imshow(Image2) 
-    plt.axis('off') 
+    #plt.axis('off') 
+    #plt.gca().invert_yaxis()
     plt.title(resolucao1) 
+    plt.show()
+

@@ -1,5 +1,10 @@
 import math
 import numpy as np
+
+
+
+
+
 class Ponto:
     def __init__(self, x: int, y: int, resolucao: list) -> None:
         self.x, self.y = self.scale_point(x, y, resolucao[0], resolucao[1])
